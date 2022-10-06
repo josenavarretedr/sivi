@@ -1,0 +1,119 @@
+@use "../util/" as util;
+
+header {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  // position: fixed;
+  // left: 0;
+  // top: 0;
+  width: 100%;
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+    @include util.breakpoint("md") {
+      padding: 0;
+    }
+    &__logo {
+      a {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        line-height: 50px;
+        color: var(--blue-primary);
+        font-size: 1.5rem;
+        font-weight: bold;
+        &:hover {
+          color: var(--green);
+        }
+      }
+    }
+    &__menuIcon {
+      display: block;
+      color: var(--blue-primary);
+      font-size: 1.5rem;
+      line-height: 50px;
+      &:hover {
+        color: var(--green);
+      }
+      @include util.breakpoint(md) {
+        display: none;
+      }
+    }
+    &__menu {
+      background: hsl(0, 0%, 100%, 0.5);
+      backdrop-filter: blur(1rem);
+      transition: all 0.3s;
+      a {
+        color: var(--text-color);
+        line-height: 50px;
+        transition: opacity 0.3s;
+        font-weight: bold;
+        @include util.breakpoint("md") {
+        font-weight: normal;
+        }
+        &:hover {
+          color: var(--green);
+          &::after {
+            opacity: 0.8;
+          }
+        }
+        .selected {
+          color: var(--theme-color);
+          &::after {
+            opacity: 0.8;
+          }
+        }
+      }
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      li {
+        text-align: center;
+        padding: 0 15px;
+      }
+      &__item {
+        display: block;
+        font-size: 1.2rem;
+        margin: 1rem 0;
+        @include util.breakpoint("md") {
+          font-size: 1rem;
+        }
+      }
+      &__close {
+        display: block;
+        align-self: flex-end;
+        margin-right: 3rem;
+        font-size: 1.5rem;
+        @include util.breakpoint(md) {
+          display: none;
+        }
+      }
+      @include util.breakpoint(md) {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        left: 0;
+        width: auto;
+
+        &__close {
+          display: none;
+        }
+      }
+      &--open {
+        left: 0;
+      }
+    }
+  }
+}

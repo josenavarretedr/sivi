@@ -1,0 +1,43 @@
+@use "../util/" as util;
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  a {
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+  }
+  footer {
+    background: red;
+
+    @include util.breakpoint("sm") {
+      background: cyan;
+    }
+
+    @include util.breakpoint("md") {
+      background: blue;
+    }
+
+    @include util.breakpoint("lg") {
+      background: green;
+    }
+
+    @include util.breakpoint("xl") {
+      background: yellow;
+    }
+  }
+}
